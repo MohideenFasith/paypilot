@@ -61,6 +61,12 @@ Set `OPENAI_API_KEY` to use a hosted language model for the analysis and message
 npm test
 ```
 
+Health and integration status:
+
+```bash
+curl http://localhost:3000/api/health
+```
+
 ## Architecture
 
 ```mermaid
@@ -71,6 +77,8 @@ flowchart LR
     D --> E[Sandbox approval]
 ```
 
+The application intentionally uses only built-in Node.js APIs and browser-native JavaScript. This keeps setup fast for judges and removes dependency or build failures.
+
 ## Responsible design
 
 - AI recommendations are editable and remain under human control.
@@ -78,6 +86,18 @@ flowchart LR
 - Risk scoring uses invoice context, not protected personal characteristics.
 - The demo uses PayPal Sandbox; no real funds move.
 - Secrets are server-side environment variables and excluded from Git.
+
+## Submission checklist
+
+- [x] Functional application and local setup instructions
+- [x] Meaningful PayPal and AI integration
+- [x] Public-repository-ready MIT license
+- [x] Safe demo mode
+- [x] Automated tests
+- [ ] Add PayPal Sandbox credentials and record checkout flow
+- [ ] Deploy to a public URL
+- [ ] Record a public YouTube demo under three minutes
+- [ ] Add screenshots and Devpost project description
 
 ## License
 

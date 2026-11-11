@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <title>PayPilot — AI invoice recovery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="noise"></div>
+  <header>
+    <a class="brand" href="#"><span class="logo">P</span><span>PayPilot</span><b>AI</b></a>
+    <div class="header-actions"><span id="status" class="status"><i></i> Demo mode</span><button class="ghost" id="tourBtn">How it works</button><div class="avatar">AK</div></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div><span class="eyebrow">AI ACCOUNTS RECEIVABLE</span><h1>Get paid without<br><em>burning bridges.</em></h1><p>Turn overdue invoices into thoughtful, personalized payment plans—then settle securely with PayPal.</p></div>
+      <div class="hero-stat"><span>This month</span><strong>$18,420</strong><small>recovered by PayPilot <b>↗ 24%</b></small></div>
+    </section>
+
+    <section class="workspace">
+      <aside>
+        <div class="side-title"><span>RECENT INVOICES</span><button aria-label="Add invoice">+</button></div>
+        <button class="invoice active" data-preset="nova"><span class="company-icon coral">N</span><span><b>Nova Studio</b><small>INV-2048 · 32 days</small></span><strong>$2,450</strong></button>
+        <button class="invoice" data-preset="orbit"><span class="company-icon blue">O</span><span><b>Orbit Labs</b><small>INV-2029 · 61 days</small></span><strong>$7,800</strong></button>
+        <button class="invoice" data-preset="moss"><span class="company-icon green">M</span><span><b>Moss & Co.</b><small>INV-2056 · 8 days</small></span><strong>$960</strong></button>
+        <div class="insight"><span>✦</span><div><b>Cash-flow insight</b><p>Offering a split payment now could recover <strong>$4,320</strong> this week.</p></div></div>
+      </aside>
+
+      <article class="card input-card">
+        <div class="card-heading"><div><span class="step">01</span><h2>Invoice context</h2></div><span class="saved">Saved</span></div>
+        <form id="invoiceForm">
+          <label>Client name<input id="clientName" value="Nova Studio" required></label>
+          <div class="two"><label>Invoice number<input id="invoiceNumber" value="INV-2048" required></label><label>Amount<div class="money"><select id="currency"><option>USD</option><option>EUR</option><option>GBP</option><option>INR</option></select><input id="amount" type="number" value="2450" min="1" required></div></label></div>
+          <div class="two"><label>Days overdue<input id="daysOverdue" type="number" value="32" min="1" required></label><label>Payment history<select id="history"><option value="reliable">Usually on time</option><option value="new">New client</option><option value="late" selected>Previously late</option></select></label></div>
+          <label>Relationship<select id="relationship"><option value="long-term">Long-term client</option><option value="repeat" selected>Repeat client</option><option value="new">New relationship</option></select></label>
+          <label>Helpful context<textarea id="notes" rows="3">The launch went well. They mentioned a short procurement delay last week.</textarea></label>
+          <button class="primary" type="submit"><span>✦</span> Build recovery plan <kbd>⌘ ↵</kbd></button>
+        </form>
+      </article>
+
+      <article class="card result-card" id="resultCard">
+        <div class="card-heading"><div><span class="step">02</span><h2>AI recovery plan</h2></div><span class="ai-badge">✦ AI generated</span></div>
+        <div id="emptyState" class="empty"><div>✦</div><h3>Ready when you are</h3><p>Add the invoice context, then let PayPilot create a considerate recovery strategy.</p></div>
+        <div id="loadingState" class="loading hidden"><div class="orb">✦</div><h3>Reading the signals…</h3><p>Balancing urgency, payment history, and your client relationship.</p><div class="shimmer"></div><div class="shimmer short"></div></div>
+        <div id="results" class="hidden">
+          <div class="risk-row"><div class="risk-ring" id="riskRing"><strong id="risk">—</strong><small>risk</small></div><div><span class="micro">RECOMMENDED APPROACH</span><h3 id="approach">—</h3><p id="reason">—</p></div></div>
+          <div class="meta"><span>Confidence <b id="confidence">—</b></span><span>Next action <b id="nextAction">—</b></span></div>
+          <div class="message-box"><div><span class="micro">MESSAGE DRAFT</span><button id="copyBtn">Copy</button></div><input id="subject" aria-label="Email subject"><textarea id="message" rows="9" aria-label="Email message"></textarea></div>
+          <div class="plan-box"><span class="micro">PAYMENT PLAN</span><div id="plans"></div></div>
+          <button id="paypalBtn" class="paypal"><span class="pp">P</span> Create secure PayPal checkout</button>
+          <p class="secure">🔒 Uses PayPal Sandbox · No real money moves</p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <dialog id="tour"><button class="close" id="closeTour">×</button><span class="eyebrow">HOW IT WORKS</span><h2>Human-first recovery,<br>powered by AI.</h2><ol><li><b>Read the relationship</b><span>AI weighs invoice age, value, history, and your notes.</span></li><li><b>Choose the right approach</b><span>A considerate message and payment structure are generated.</span></li><li><b>Settle with PayPal</b><span>A real Sandbox order gives the client a secure path to pay.</span></li></ol></dialog>
+  <div id="toast" class="toast">Copied to clipboard</div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
